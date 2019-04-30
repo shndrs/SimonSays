@@ -1,0 +1,6 @@
+framework module Pods_Simon_Says {
+  umbrella header "Pods-Simon Says-umbrella.h"
+
+  export *
+  module * { export * }
+}

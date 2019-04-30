@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2705019DA3AA70AB2FFDC613 /* Pods_Simon_Says.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BB4BD03A59A511EE0A53BE /* Pods_Simon_Says.framework */; };
 		F43C65FF2278029300B47535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C65FE2278029300B47535 /* AppDelegate.swift */; };
 		F43C66012278029300B47535 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C66002278029300B47535 /* ViewController.swift */; };
 		F43C66042278029300B47535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43C66022278029300B47535 /* Main.storyboard */; };
 		F43C66062278029400B47535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43C66052278029400B47535 /* Assets.xcassets */; };
 		F43C66092278029400B47535 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43C66072278029400B47535 /* LaunchScreen.storyboard */; };
+		F43C661322782E3C00B47535 /* SHNDCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C661222782E3C00B47535 /* SHNDCircularButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32BB4BD03A59A511EE0A53BE /* Pods_Simon_Says.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simon_Says.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B3944D1584143EFF295A99 /* Pods-Simon Says.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simon Says.release.xcconfig"; path = "Target Support Files/Pods-Simon Says/Pods-Simon Says.release.xcconfig"; sourceTree = "<group>"; };
+		6DDD660EF00CD975502E363C /* Pods-Simon Says.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simon Says.debug.xcconfig"; path = "Target Support Files/Pods-Simon Says/Pods-Simon Says.debug.xcconfig"; sourceTree = "<group>"; };
 		F43C65FB2278029300B47535 /* Simon Says.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simon Says.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43C65FE2278029300B47535 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F43C66002278029300B47535 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		F43C66052278029400B47535 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F43C66082278029400B47535 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F43C660A2278029400B47535 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F43C661222782E3C00B47535 /* SHNDCircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHNDCircularButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2705019DA3AA70AB2FFDC613 /* Pods_Simon_Says.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		347F06D400AA39EE12FEB6E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6DDD660EF00CD975502E363C /* Pods-Simon Says.debug.xcconfig */,
+				54B3944D1584143EFF295A99 /* Pods-Simon Says.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F2D24DC6BA904AB60FDCEA31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32BB4BD03A59A511EE0A53BE /* Pods_Simon_Says.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F43C65F22278029300B47535 = {
 			isa = PBXGroup;
 			children = (
 				F43C65FD2278029300B47535 /* Simon Says */,
 				F43C65FC2278029300B47535 /* Products */,
+				347F06D400AA39EE12FEB6E4 /* Pods */,
+				F2D24DC6BA904AB60FDCEA31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +80,7 @@
 		F43C65FD2278029300B47535 /* Simon Says */ = {
 			isa = PBXGroup;
 			children = (
+				F43C661022782E1500B47535 /* View */,
 				F43C65FE2278029300B47535 /* AppDelegate.swift */,
 				F43C66002278029300B47535 /* ViewController.swift */,
 				F43C66022278029300B47535 /* Main.storyboard */,
@@ -64,6 +91,14 @@
 			path = "Simon Says";
 			sourceTree = "<group>";
 		};
+		F43C661022782E1500B47535 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F43C661222782E3C00B47535 /* SHNDCircularButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F43C660D2278029400B47535 /* Build configuration list for PBXNativeTarget "Simon Says" */;
 			buildPhases = (
+				E09194C4316CD7AC7297B29D /* [CP] Check Pods Manifest.lock */,
 				F43C65F72278029300B47535 /* Sources */,
 				F43C65F82278029300B47535 /* Frameworks */,
 				F43C65F92278029300B47535 /* Resources */,
+				20B3D276CE4845B4E7859F60 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +167,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20B3D276CE4845B4E7859F60 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Simon Says/Pods-Simon Says-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SHNDStuffs/SHNDStuffs.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHNDStuffs.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Simon Says/Pods-Simon Says-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E09194C4316CD7AC7297B29D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Simon Says-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F43C65F72278029300B47535 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +221,7 @@
 			files = (
 				F43C66012278029300B47535 /* ViewController.swift in Sources */,
 				F43C65FF2278029300B47535 /* AppDelegate.swift in Sources */,
+				F43C661322782E3C00B47535 /* SHNDCircularButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +365,7 @@
 		};
 		F43C660E2278029400B47535 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DDD660EF00CD975502E363C /* Pods-Simon Says.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +384,7 @@
 		};
 		F43C660F2278029400B47535 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54B3944D1584143EFF295A99 /* Pods-Simon Says.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
