@@ -24,6 +24,7 @@ final class ViewController: UIViewController {
     @IBOutlet private var scoreLabels: [UILabel]!
 
     @IBAction private func colorButtonHandler(_ sender: SHNDCircularButton) {
+        print("on \(sender.tag) button tapped")
         if sender.tag == colorsToTap.removeFirst() {
             
         } else {
@@ -38,7 +39,7 @@ final class ViewController: UIViewController {
                 button.isEnabled = false
             }
             scores[currentPlayer] += 1
-            updateScoresLabel()
+            updateScoresLabels()
             switchPlayers()
             actionButton.setTitle("Continue", for: .normal)
             actionButton.isEnabled = true
@@ -78,33 +79,19 @@ final class ViewController: UIViewController {
         scores = [0,0]
         playerLabels[currentPlayer].alpha = 1.0
         playerLabels[1].alpha = 0.75
-        updateScoresLabel()
+        updateScoresLabels()
     }
     
-    private func updateScoresLabel() {
+    private func updateScoresLabels() {
         for (index,label) in scoreLabels.enumerated() {
             label.text = "\(scores[index])"
         }
     }
     
     private func switchPlayers() {
-        playerLabels[currentPlayer].alpha = 0.75
+        playerLabels[currentPlayer].alpha = 0.5
         currentPlayer = currentPlayer == 0 ? 1 : 0
         playerLabels[currentPlayer].alpha = 1.0
-    }
-    
-    private func sortUIElements() {
-        colorButtons = colorButtons.sorted() {
-            $0.tag < $1.tag
-        }
-        
-        playerLabels = playerLabels.sorted() {
-            $0.tag < $1.tag
-        }
-        
-        scoreLabels = scoreLabels.sorted() {
-            $0.tag < $1.tag
-        }
     }
     
     private func endGame() {
@@ -119,7 +106,7 @@ final class ViewController: UIViewController {
     
     private func playSequence() {
         if sequenceIndex < colorSequence.count {
-            flash(button: colorButtons[sequenceIndex])
+            flash(button: colorButtons[colorSequence[sequenceIndex]])
             sequenceIndex += 1
         } else {
             colorsToTap = colorSequence
@@ -137,6 +124,20 @@ final class ViewController: UIViewController {
             button.alpha = 0.7
         }) { [unowned self] (success) in
             self.playSequence()
+        }
+    }
+    
+    private func sortUIElements() {
+        colorButtons = colorButtons.sorted() {
+            $0.tag < $1.tag
+        }
+        
+        playerLabels = playerLabels.sorted() {
+            $0.tag < $1.tag
+        }
+        
+        scoreLabels = scoreLabels.sorted() {
+            $0.tag < $1.tag
         }
     }
 }
