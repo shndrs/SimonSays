@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Simon Says
 //
-//  Created by NP2 on 4/30/19.
+//  Created by Sahand Raeisi on 4/30/19.
 //  Copyright © 2019 shndrs. All rights reserved.
 //
 
@@ -11,24 +11,41 @@ import SHNDStuffs
 
 final class ViewController: UIViewController {
 
-    
     private var currentPlayer = 0
     private var scores = [0,0]
     private var sequenceIndex = 0
     private var colorSequence = Array<Int>()
     private var colorsToTap = Array<Int>()
+    private var gameEnded = false
     
-    @IBOutlet var colorButtons: [SHNDCircularButton]!
-    @IBOutlet weak var actionButton: UIButton!
-    @IBOutlet var playerLabels: [UILabel]!
-    @IBOutlet var scoreLabels: [UILabel]!
+    @IBOutlet private var colorButtons: [SHNDCircularButton]!
+    @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private var playerLabels: [UILabel]!
+    @IBOutlet private var scoreLabels: [UILabel]!
 
-    @IBAction func colorButtonHandler(_ sender: SHNDCircularButton) {
-        print("Button \(sender.tag) tapped")
+    @IBAction private func colorButtonHandler(_ sender: SHNDCircularButton) {
+        if sender.tag == colorsToTap.removeFirst() {
+            
+        } else {
+            for button in colorButtons {
+                button.isEnabled = false
+            }
+            endGame()
+            return
+        }
+        if colorsToTap.isEmpty {
+            for button in colorButtons {
+                button.isEnabled = false
+            }
+            scores[currentPlayer] += 1
+            updateScoresLabel()
+            switchPlayers()
+            actionButton.setTitle("Continue", for: .normal)
+            actionButton.isEnabled = true
+        }
     }
     
-    
-    @IBAction func actionButtonHandler(_ sender: UIButton) {
+    @IBAction private func actionButtonHandler(_ sender: UIButton) {
         sequenceIndex = 0
         actionButton.setTitle("Memorize", for: .normal)
         actionButton.isEnabled = false
@@ -37,6 +54,13 @@ final class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
             guard let shndSelf = self else { return }
             shndSelf.playSequence()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if gameEnded {
+            gameEnded = false
+            createNewGame()
         }
     }
     
@@ -49,6 +73,24 @@ final class ViewController: UIViewController {
             button.alpha = 0.7
             button.isEnabled = false
         }
+        
+        currentPlayer = 0
+        scores = [0,0]
+        playerLabels[currentPlayer].alpha = 1.0
+        playerLabels[1].alpha = 0.75
+        updateScoresLabel()
+    }
+    
+    private func updateScoresLabel() {
+        for (index,label) in scoreLabels.enumerated() {
+            label.text = "\(scores[index])"
+        }
+    }
+    
+    private func switchPlayers() {
+        playerLabels[currentPlayer].alpha = 0.75
+        currentPlayer = currentPlayer == 0 ? 1 : 0
+        playerLabels[currentPlayer].alpha = 1.0
     }
     
     private func sortUIElements() {
@@ -63,6 +105,12 @@ final class ViewController: UIViewController {
         scoreLabels = scoreLabels.sorted() {
             $0.tag < $1.tag
         }
+    }
+    
+    private func endGame() {
+        let message = currentPlayer == 0 ? "Player 2 Wins!" : "Player 1 Wins!"
+        actionButton.setTitle(message, for: .normal)
+        gameEnded = true
     }
     
     private func addNewColor() {
